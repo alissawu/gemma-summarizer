@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summarizer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <!--use Vue.js without installation, from CDN-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="icon" href="data:,"> <!-- disable favicon requests -->
+</head>
+<body>
+    <!-- APP CONTAINER -->
+    <div id="app"> 
+        <header>
+            <h1>Text Summarizer</h1>
+        </header>
+
+        <!-- history sidebar - hidden by default with the class if showHistory is false -->
+        <div class="history-sidebar" :class="{ 'history-sidebar-hidden': !showHistory }">
+            <div class="history-header">
+                <h2>History</h2>
+                <!-- no separate pin button, we'll handle pinning through the hamburger -->
+            </div>
+            
+            <div class="history-list" v-if="history.length > 0">
+                <div 
+                    v-for="item in history" 
+                    :key="item.id" 
+                    class="history-item"
+                    @click="loadFromHistory(item)"
+                >
+                    <div class="history-item-date">{{ item.date }}</div>
+                    <div class="history-item-text">{{ item.text }}</div>
+                </div>
+            </div>
+            
+            <div v-else class="no-history">
+                Your history will appear here.
+            </div>
+        </div>
+        
+        <!-- trigger to show or hide history -->
+        <!-- mouseenter to show, click to toggle pin, visual indicator for pinned state -->
+        <div class="history-trigger" 
+             :class="{ 'pinned': isPinned }"
+             @mouseenter="showHistory = true"
+             @click="togglePin">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+
+        <main :class="{ 'with-sidebar' : showHistory}">
+            <div class="main-content">
+                <div class="input-container">
+                    <h2>Enter Text to Summarize</h2>
+                    <!--10 rows, 50 cols are visible in the box-->
+                    <textarea
+                        v-model="inputText"
+                        placeholder="Enter text here..."
+                        rows="10" 
+                        cols="50"
+                        spellcheck="true"
+                    ></textarea>
+                    <!--disables button if isLoading property of Vue instance-->
+                    <button
+                        @click="getSummary"
+                        class="submit-btn"
+                        :disabled="isLoading"
+                    >
+                        {{isLoading ? 'Summarizing...' : 'Summarize'}}
+                    </button>
+                </div>
+
+
+                <!-- only show if the summary data property is not empty -->
+                <h2>Summary</h2>
+                <div class="output" v-if="summary || error">
+                    <div v-if="error" class="error">{{ error }}</div>
+                    <div v-if="summary" class="summary">{{ summary }}</div>
+                </div>
+            </div>
+        
+        </main>
+        <!-- put it here so everything is rendered before it runs -->
+        <script src="/static/script.js"></script>
+
+        
+    </div>
+
+</body>
+</html>

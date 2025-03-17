@@ -1,0 +1,253 @@
+/* NEED COLOR SCHEME*/
+* {
+    box-sizing: border-box;
+    margin: 0.5;
+    padding: 0.5;
+}
+
+main {
+    display: flex;
+    flex-direction: column; /* child elements laid out in column*/
+    position: relative;
+    transition: margin-left 0.3s ease; /* smooth transition when sidebar appears/disappears */
+}
+main.with-sidebar {
+    margin-left: 200px; /* push content to make room for sidebar */
+}
+.main-content {
+    flex: 1;
+    margin-left: 40px; /* Make space for the trigger */
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.5;
+    resize: vertical;
+    
+    /* fix copy paste */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    outline: 2px solid #03364d;
+    outline-offset: 2px;
+}
+
+
+  
+.history-trigger {
+    /* position this in the top left corner with a bit of padding*/
+    position: fixed; /* Fixed position to stay in view */
+    top: 5px;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+    background-color: #03364d; 
+    border-radius: 0 4px 4px 0; 
+    z-index: 20; /* needs to be above sidebar so always clickable */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.history-trigger:hover {
+    background-color: #2980b9; 
+}
+
+.history-trigger:active {
+    background-color: #2980b9; 
+}
+
+/* visual indicator for when trigger is pinned so you know it's locked open */
+.history-trigger.pinned {
+    background-color: #2980b9;
+    box-shadow: inset 0 0 0 2px white;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 18px;
+    height: 12px;
+}
+.hamburger span {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+} 
+.trigger-text {
+    margin-top: 4px;
+}
+
+/* fixed position keeps it in view when scrolling */
+.history-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: white;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    z-index: 10;
+    overflow-y: auto; /* so you can scroll if there's a lot of history */
+    transition: transform 0.3s ease; /* smooth slide in/out */
+}
+  
+.history-sidebar-hidden {
+    transform: translateX(-100%); /* slides off screen to the left */
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+  
+.pin-btn {
+    background-color: transparent;
+    color: #9e9e9e;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+  
+.pin-btn:hover {
+    color: #03364d;
+}
+
+/* adding styles for history items that were missing */
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* space between history items */
+}
+
+.history-item {
+    padding: 10px;
+    background-color: #f7f5f3; /* match app background */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.history-item:hover {
+    background-color: #e0e0e0;
+}
+
+.history-item-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.history-item-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    /* truncate text with ellipsis */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* show only 2 lines max */
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+}
+
+.no-history {
+    color: #888;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+body {
+    font-family: Bookman, URW Bookman L, serif;
+    line-height: 1.6;
+    background-color: #f7f5f3; /*ivory*/
+    color: #333;
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+#app {
+    /* 100%, anything less makes it two lines, maybe pixel code it, or make dynamic?*/
+    max-width: 100%; 
+    margin: 0.5 auto;
+}
+/* consider resizing text if it gets too small? right now it wraps around which isn't bad but idk food4thought*/
+
+h1 {
+    text-align: left;
+    margin-bottom: 20px;
+    color: #03364d /* u cant even tell it's navy bruh idk */
+}
+
+h2 {
+    text-align: left;
+    margin-bottom: 5px;
+    color: #03364d 
+}
+
+.input-container {
+   border-radius: 6px;
+   margin-bottom: 20px;
+}
+
+.submit-btn {
+    background-color: #03364d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.submit-btn:hover {
+    background-color: #0a548c;
+}
+
+.submit-btn:disabled {
+    background-color: #9e9e9e;
+    cursor: not-allowed;
+}
+
+/* style for output/summary container */
+.output {
+    background-color: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.summary {
+    line-height: 1.6;
+}
+
+.error {
+    color: #e74c3c;
+    padding: 10px;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 4px;
+}

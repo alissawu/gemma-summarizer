@@ -70,7 +70,7 @@ func summarizeText(text string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	// tells server the data being sent is in JSON, helsp process correctly
+	// tells server the data being sent is in JSON, helps process correctly
 	req.Header.Set("Content-Type", "application/json")
 
 	// Send request
@@ -122,6 +122,24 @@ func (e *SummaryError) Error() string {
 	return e.Message
 }
 
+// CORS middleware - allows cross-origin requests to our API
+func CORSMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// sets headers that tell browsers it's ok to make cross-origin requests
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*") // allow any origin (not secure for production)
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, Authorization")
+
+		// Handle preflight requests (browser sends OPTIONS before actual request)
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204) // 204 = success with no content
+			return
+		}
+
+		c.Next() // continue to the next handler
+	}
+}
+
 // Handle API request in Gin
 func summarizeHandler(c *gin.Context) {
 	var req SummaryRequest
@@ -162,8 +180,19 @@ func main() {
 
 	r := gin.Default()
 
-	// Health check endpoint -- returns a success message
+	// allow CORS middleware to all routes
+	r.Use(CORSMiddleware())
+
+	// serve static files from the static directory - relative to the current working directory
+	r.Static("/static", "./static")
+
+	// serve index.html at the root path
 	r.GET("/", func(c *gin.Context) {
+		c.File("./static/index.html")
+	})
+
+	// health check endpoint
+	r.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Summarizer API is running"})
 	})
 
