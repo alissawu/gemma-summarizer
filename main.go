@@ -199,12 +199,7 @@ func main() {
 	// Summarize endpoint - call the function
 	r.POST("/summarize", summarizeHandler)
 
-	// get PORT from environment variable (optional, I didn't set one)
-	// defaults to 8080 if no env var
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
+	port := "10000"
 	log.Println("Server running on port " + port)
 	err := r.Run("0.0.0.0:" + port)
 	if err != nil {
