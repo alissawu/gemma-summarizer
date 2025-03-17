@@ -206,7 +206,7 @@ func main() {
 		port = "8080"
 	}
 	log.Println("Server running on port " + port)
-	err := r.Run(":" + port)
+	err := r.Run("0.0.0.0:" + port)
 	if err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
