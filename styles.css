@@ -1,0 +1,48 @@
+/* NEED COLOR SCHEME*/
+* {
+    box-sizing: border-box;
+    margin: 0.5;
+    padding: 0.5;
+}
+
+body {
+    font-family: Bookman, URW Bookman L, serif;
+    line-height: 1.6;
+    background-color: #f7f5f3; /*ivory*/
+    color: #333;
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+#app {
+    /* 100%, anything less makes it two lines, maybe pixel code it, or make dynamic?*/
+    max-width: 100%; 
+    margin: 0.5 auto;
+}
+/* consider resizing text if it gets too small? right now it wraps around which isn't bad but idk food4thought*/
+
+h1 {
+    text-align: left;
+    margin-bottom: 20px;
+    color: #03364d /* u cant even tell it's navy bruh idk */
+}
+
+h2 {
+    text-align: left;
+    margin-bottom: 5px;
+    color: #03364d 
+}
+
+.input-container {
+   background-color: white; 
+   padding: 20px;
+   border-radius: 6px;
+   margin-bottom: 20px;
+}
+/*idk is this even working no its not lol fk*/
+.submit-btn {
+    opacity: 0.8;
+    hover {
+        background-color: #000000;
+        color: #803232;
+    }
+}
