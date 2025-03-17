@@ -1,6 +1,8 @@
-module github.com/alissawu/gemma-summarizer
+module github.com/alissawu/go-summarizer
 
-go 1.23
+go 1.23.0
+
+toolchain go1.24.1
 
 require (
 	github.com/gin-gonic/gin v1.10.0
