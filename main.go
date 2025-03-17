@@ -126,7 +126,7 @@ func (e *SummaryError) Error() string {
 func summarizeHandler(c *gin.Context) {
 	var req SummaryRequest
 
-	// Bind JSON request body to SummarRequest struct
+	// Bind JSON request body to SummaryRequest struct
 	if err := c.ShouldBindJSON(&req); err != nil {
 		// returns error if it's the wrong format (ie: missing text)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request format. Please provide 'text' field."})
