@@ -199,9 +199,17 @@ func main() {
 	// Summarize endpoint - call the function
 	r.POST("/summarize", summarizeHandler)
 
-	port := "10000"
+	// can i delete this
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // fallback port if not set
+	}
+
+	// log which port
 	log.Println("Server running on port " + port)
-	err := r.Run("0.0.0.0:" + port)
+
+	// Start the server using the port from environment
+	err := r.Run(":" + port)
 	if err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
