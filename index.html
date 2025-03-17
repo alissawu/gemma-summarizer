@@ -10,34 +10,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app"> <!--Vue app container, reactive (auto update)-->
-        <h1>Text Summarizer</h1>
-        <div class="input-container">
-            <h2>Enter Text to Summarize</h2>
-            <!--10 rows, 50 cols are visible in the box-->
-            <textarea
-                v-model="inputText"
-                placeholder="Enter text here..."
-                rows="10" 
-                cols="50" 
-            ></textarea>
-            <!--disables button if isLoading property of Vue instance-->
-            <button
-                @click="getSummary"
-                class="submit-btn"
-                :disabled="isLoading"
-            >
-                {{isLoading ? 'Summarizing...' : 'Summarize'}}
-            </button>
-        </div>
-        <!-- only show if the summary data property is not empty -->
-        <h2>Summary</h2>
-        <div class="output" v-if="summary || error">
-            <div v-if="error" class="error">{{ error }}</div>
-            <div v-if="summary" class="summary">{{ summary }}</div>
-        </div>
+    <!-- APP CONTAINER -->
+    <div id="app"> 
+        <header>
+            <h1>Text Summarizer</h1>
+        </header>
+        <main>
+            <div class="history-trigger">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="history-text">History</span>
+            </div>
+            <div class="input-container">
+                <h2>Enter Text to Summarize</h2>
+                <!--10 rows, 50 cols are visible in the box-->
+                <textarea
+                    v-model="inputText"
+                    placeholder="Enter text here..."
+                    rows="10" 
+                    cols="50" 
+                ></textarea>
+                <!--disables button if isLoading property of Vue instance-->
+                <button
+                    @click="getSummary"
+                    class="submit-btn"
+                    :disabled="isLoading"
+                >
+                    {{isLoading ? 'Summarizing...' : 'Summarize'}}
+                </button>
+            </div>
+            <!-- only show if the summary data property is not empty -->
+            <h2>Summary</h2>
+            <div class="output" v-if="summary || error">
+                <div v-if="error" class="error">{{ error }}</div>
+                <div v-if="summary" class="summary">{{ summary }}</div>
+            </div>
+            <!-- put it here so everything is rendered before it runs -->
+            <script src="script.js"></script>
+        </main>
+
+        
     </div>
-    <script src="script.js"></script>
 
 </body>
 </html>
