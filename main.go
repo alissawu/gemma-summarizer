@@ -202,7 +202,7 @@ func main() {
 	// can i delete this
 	port := os.Getenv("PORT") // get port from environment variable
 	if port == "" {
-		port := "8080" // fallback port if not set
+		port = "8080" // fallback port if not set
 	}
 	// log which port
 	log.Println("Server running on port " + port)
