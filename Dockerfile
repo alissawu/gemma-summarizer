@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine AS builder
+FROM golang:1.23-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -6,9 +6,9 @@ WORKDIR /app
 # Copy go mod and sum files
 COPY go.mod go.sum ./
 
-# Fix go.mod file for Railway compatibility
+# Fix go.mod file format issues
 RUN sed -i '/toolchain/d' go.mod && \
-    sed -i 's/go 1.23.0/go 1.21/' go.mod
+    sed -i 's/go 1.23.0/go 1.23/' go.mod
 
 # Download dependencies 
 RUN go mod download

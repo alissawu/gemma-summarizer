@@ -1,5 +1,5 @@
 go 1.23.0
 
-toolchain go1.24.1
-
 use .
+
+// this only affects the local dev environment
