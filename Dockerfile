@@ -6,7 +6,11 @@ WORKDIR /app
 # Copy go mod and sum files
 COPY go.mod go.sum ./
 
-# Download dependencies
+# Fix go.mod file for Railway compatibility
+RUN sed -i '/toolchain/d' go.mod && \
+    sed -i 's/go 1.23.0/go 1.21/' go.mod
+
+# Download dependencies 
 RUN go mod download
 
 # Copy source code
