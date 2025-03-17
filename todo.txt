@@ -1,3 +1,0 @@
-Color scheme
-Check out the sizing of the input box, dynamic?
-Make it so that I can ctrl-A to select all, ctrl C, ctrl V

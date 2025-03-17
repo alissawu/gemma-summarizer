@@ -186,6 +186,11 @@ func main() {
 	// serve static files from the static directory - relative to the current working directory
 	r.Static("/static", "./static")
 
+	// Add this to handle SPA routing (if your Vue app uses client-side routing)
+	r.NoRoute(func(c *gin.Context) {
+		c.File("./static/index.html")
+	})
+
 	// serve index.html at the root path
 	r.GET("/", func(c *gin.Context) {
 		c.File("./static/index.html")
@@ -199,17 +204,14 @@ func main() {
 	// Summarize endpoint - call the function
 	r.POST("/summarize", summarizeHandler)
 
-	// can i delete this
-	port := os.Getenv("PORT") // get port from environment variable
+	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // fallback port if not set
+		port = "8080"
 	}
-	// log which port
 	log.Println("Server running on port " + port)
-
-	// Start the server using the port from environment
 	err := r.Run(":" + port)
 	if err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
+
 }

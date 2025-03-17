@@ -89,7 +89,7 @@ const app = createApp({
                 
                 // use relative URL instead of absolute URL to avoid CORS issues
                 // this will work no matter what domain/port the frontend is running on
-                const response = await fetch('https://gemma-summarizer-api.onrender.com/summarize', {
+                const response = await fetch('/summarize', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
