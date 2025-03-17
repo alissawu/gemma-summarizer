@@ -26,11 +26,11 @@ const app = createApp({
                 // has 3 states - Pending, Fufilled (Resolved), Rejected
                 // resolve - fn to call when succeed, reject - fn to call when fail
                 await new Promise((resolve, _) => setTimeout(resolve, 1000)); // resolve is the callback fn called after the delay
-                summary.value = inputText.value.trim();
-                // simulate error
                 if(inputText.value.trim().length > 10){
                     throw new Error('Text too long');
                 }
+                summary.value = inputText.value.trim();
+                // simulate error
             }
             catch (err) {
                 summary.value = '';
@@ -40,8 +40,6 @@ const app = createApp({
             finally {
                 isLoading.value = false;
             }
-            
-
         };
         return {
             inputText, 

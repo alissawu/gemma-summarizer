@@ -33,15 +33,16 @@ h2 {
 }
 
 .input-container {
-
    border-radius: 6px;
    margin-bottom: 20px;
 }
 /*idk is this even working no its not lol fk*/
 .submit-btn {
-    opacity: 0.8;
-    hover {
-        background-color: #000000;
-        color: #803232;
-    }
+    background-color: #03364d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
 }
