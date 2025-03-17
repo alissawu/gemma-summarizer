@@ -26,8 +26,15 @@
                 @click="getSummary"
                 class="submit-btn"
                 :disabled="isLoading"
-            >Summarize</button>
-
+            >
+                {{isLoading ? 'Summarizing...' : 'Summarize'}}
+            </button>
+        </div>
+        <!-- only show if the summary data property is not empty -->
+        <h2>Summary</h2>
+        <div class="output" v-if="summary || error">
+            <div v-if="error" class="error">{{ error }}</div>
+            <div v-if="summary" class="summary">{{ summary }}</div>
         </div>
     </div>
     <script src="script.js"></script>
