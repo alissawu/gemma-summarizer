@@ -1,4 +1,4 @@
-module github.com/alissawu/go-summarizer
+module github.com/alissawu/gemma-summarizer
 
 go 1.24.0
 
