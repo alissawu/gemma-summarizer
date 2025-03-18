@@ -1,8 +1,8 @@
 /* NEED COLOR SCHEME*/
 * {
     box-sizing: border-box;
-    margin: 0.5;
-    padding: 0.5;
+    margin: 0.5px;
+    padding: 0.5px;
 }
 
 main {
@@ -276,24 +276,27 @@ h2 {
 .github-link svg {
     fill: white;
 }
-.nav-links {
+header .nav-links {
     position: absolute;
     top: 20px;
     right: 20px;
+    display: inline-block;
+    z-index: 5;
 }
   
-.nav-links a {
-    color: #03364d;
-    text-decoration: none;
+header .nav-links a {
+    color: #03364d !important;
+    text-decoration: none !important;
     margin-left: 15px;
     font-size: 0.9em;
     padding-bottom: 2px;
+    display: inline-block;
 }
   
-.nav-links a:hover {
-    text-decoration: underline;
+header .nav-links a:hover {
+    text-decoration: underline !important;
 }
   
-.nav-links a.active {
+header .nav-links a.active {
     border-bottom: 2px solid #03364d;
 }
