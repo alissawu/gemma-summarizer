@@ -16,8 +16,7 @@
     </div>
   </header>
   
-  <main class="about-container">
-    <section class="about-section">
+    <section>
       <h2>About This Project</h2>
       <p>Text Summarizer summarizes lengthy texts into the important parts. It's great for quickly understanding articles, research papers, or any lengthy content.</p>
       
@@ -32,31 +31,23 @@
       </ul>
       
       <h3>Technology Stack</h3>
-      <div class="tech-stack">
-        <div class="tech-item">
           <h4>Backend</h4>
           <ul>
             <li>Go</li>
             <li>Gin web framework</li>
             <li>Google Gemma API</li>
           </ul>
-        </div>
-        <div class="tech-item">
           <h4>Frontend</h4>
           <ul>
             <li>Vue.js</li>
             <li>HTML/CSS</li>
             <li>LocalStorage for history</li>
           </ul>
-        </div>
-        <div class="tech-item">
           <h4>Deployment</h4>
           <ul>
             <li>Docker</li>
             <li>Railway platform</li>
           </ul>
-        </div>
-      </div>
       
       <h3>How It Works</h3>
       <p>When you submit text, the Go backend processes your request and sends it to the Gemma 3 API. The language model analyzes the content and returns a concise summary of the most important content, which is displayed on the Vue.js front-end.</p>
@@ -75,6 +66,5 @@
         </div>
       </footer>
     </section>
-  </main>
 </body>
 </html>
