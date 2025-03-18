@@ -178,6 +178,12 @@ const app = createApp({
             return inputText.value.length;
         });
 
+        const renderedSummary = computed(() => {
+            if (!summary.value) return '';
+            // use marked library to render the HTML
+            return marked.parse(summary.value);
+        });
+
         return {
             inputText, 
             getSummary,
@@ -190,7 +196,8 @@ const app = createApp({
             togglePin,
             loadFromHistory,
             clearHistory,
-            charCount
+            charCount,
+            renderedSummary
         };
     }
 });

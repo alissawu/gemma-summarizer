@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/static/styles.css">
     <!--use Vue.js without installation, from CDN-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--to fix the asterisk thing-->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="icon" href="data:,"> <!-- disable favicon requests -->
 </head>
 <body>
@@ -84,7 +86,8 @@
                 <h2>Summary</h2>
                 <div class="output" v-if="summary || error">
                     <div v-if="error" class="error">{{ error }}</div>
-                    <div v-if="summary" class="summary">{{ summary }}</div>
+                    <!--v-html treats returned content as HTML and renders it to the DOM, which is better bc {{ }} (interpolation) just shows the HTML tags instead of rendering them which is bad-->
+                    <div v-if="summary" class="summary" v-html="renderedSummary"></div>
                 </div>
             </div>
         
