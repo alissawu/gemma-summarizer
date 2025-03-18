@@ -197,6 +197,12 @@ func main() {
 		c.File("./static/index.html")
 	})
 
+	// serve about.html
+	// Serve about.html
+	r.GET("/about", func(c *gin.Context) {
+		c.File("./static/about.html")
+	})
+
 	// health check endpoint
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Summarizer API is running"})

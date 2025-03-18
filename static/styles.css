@@ -30,7 +30,6 @@ textarea {
     line-height: 1.5;
     resize: vertical;
     
-    /* fix copy paste */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -46,7 +45,7 @@ textarea:focus {
   
 .history-trigger {
     /* position this in the top left corner with a bit of padding*/
-    position: fixed; /* Fixed position to stay in view */
+    position: fixed; 
     top: 5px;
     left: 0px;
     width: 30px;
@@ -250,4 +249,51 @@ h2 {
     padding: 10px;
     background-color: rgba(231, 76, 60, 0.1);
     border-radius: 4px;
+}
+
+
+.github-link {
+    margin-top: 30px;
+    text-align: center;
+}
+  
+.github-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #03364d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+  
+.github-link a:hover {
+    background-color: #0a548c;
+}
+  
+.github-link svg {
+    fill: white;
+}
+.nav-links {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+  
+.nav-links a {
+    color: #03364d;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 0.9em;
+    padding-bottom: 2px;
+}
+  
+.nav-links a:hover {
+    text-decoration: underline;
+}
+  
+.nav-links a.active {
+    border-bottom: 2px solid #03364d;
 }
