@@ -198,7 +198,6 @@ func main() {
 	})
 
 	// serve about.html
-	// Serve about.html
 	r.GET("/about", func(c *gin.Context) {
 		c.File("./static/about.html")
 	})
