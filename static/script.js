@@ -180,7 +180,6 @@ const app = createApp({
 
         const renderedSummary = computed(() => {
             if (!summary.value) return '';
-            // use marked library to render the HTML
             return marked.parse(summary.value);
         });
 
