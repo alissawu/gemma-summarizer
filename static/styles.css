@@ -18,12 +18,13 @@ body {
 header {
   position: relative;
   padding: 10px 0;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 h1 {
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+  margin-left: 5px;
   color: #03364d; /* navy */
 }
 
@@ -35,9 +36,9 @@ h2 {
 
 header .nav-links {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  display: inline-block;
+  text-align: right;
+  top: 10px;
+  right: 10px;
   z-index: 5;
 }
 
@@ -329,5 +330,5 @@ section ul {
 }
 
 .about-footer {
-  margin-top: 40px;
+  margin-top: 10px;
 }
