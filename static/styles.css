@@ -332,3 +332,27 @@ section ul {
 .about-footer {
   margin-top: 10px;
 }
+
+/* credit: https://codepen.io/LocalPCGuy/pen/bvVgQJ */
+.trashcan {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  cursor: pointer;
+  
+  .trashcan-open {
+    display: none;
+  }
+  
+  &:hover {
+    .trashcan-open {
+      display: inline;
+    }
+    .trashcan-closed {
+      display: none;
+    }
+  }
+  
+}
