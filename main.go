@@ -51,7 +51,8 @@ func summarizeText(text string) (string, error) {
 
 	// Create request payload - the data sent to the server (Gemma API), body of the request
 	// originally constructed in Go as nested maps and slices
-	const prompt = "Summarize the following text concisely. Even if the text is short, try to provide a concise summary. Highlight the main points and details, and provide an organized summary."
+	const prompt = `Summarize the following text concisely. Even if the text is short, try to provide a concise summary. 
+					Highlight the main points and details, and provide an organized summary. Don't start off with Summary: or In summary: or starters like that, just give the organized concise clear summary`
 	reqBody := map[string]interface{}{
 		"contents": []map[string]interface{}{
 			{"parts": []map[string]string{
