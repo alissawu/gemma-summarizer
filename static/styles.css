@@ -354,3 +354,16 @@ section ul {
 .trashcan:hover .trashcan-closed {
   display: none;
 }
+
+.try-it-out-btn {
+  background-color: #03364d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline;
+}
+.try-it-out-btn:hover {
+    background-color: #2980b9;
+}
